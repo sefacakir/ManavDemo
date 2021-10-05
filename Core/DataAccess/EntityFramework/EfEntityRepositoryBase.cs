@@ -10,12 +10,13 @@ namespace Core.EntityFramework
     {
         public void Add(TEntity entity)
         {
-            throw new NotImplementedException();
+            //simülasyon olarak veri tabanına eklendiğini düşünelim.
+            
         }
 
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            
         }
 
         public TEntity Get()

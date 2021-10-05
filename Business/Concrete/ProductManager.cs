@@ -1,4 +1,8 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
+using Core.Utilities.Results.Concrete.SuccessResults;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -9,26 +13,33 @@ namespace Business.Concrete
 {
     public class ProductManager : IProductService
     {
-        IProductDal _productDal;
+        IProductDal _productDal; 
 
         public ProductManager(IProductDal productDal)
         {
             _productDal = productDal;
-        }
+            //burdan IEntityRepository içerisindeki ekle metodu çalışmakta.
+        } 
 
-        public void Add(Product product)
+        public IResult Add(Product product)
         {
+            //Burda gerekli karşılaştırmalar yapıldı ve eklenmesinde bir sakınca görülmedi.
             _productDal.Add(product);
+            return new SuccessResult(Messages.ProductAdded);
+            //ekledikten sonra bana bir mesaj vermesini istiyorum.
         }
 
-        public void Delete(Product product)
+        public IResult Delete(Product product)
         {
             _productDal.Delete(product);
+            return new SuccessResult(Messages.MaintenanceTime);
         }
 
-        public void Update(Product product)
+        public IResult Update(Product product)
         {
             _productDal.Update(product);
+            return new ErrorResult(Messages.ProductNameInvalid);
+
         }
     }
 }

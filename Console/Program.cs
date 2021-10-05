@@ -17,10 +17,11 @@ namespace Console
                 ProductName = "Elma",
                 Quantity = 30,
                 UnitPrice = 3.45
-
-            };
+            }; 
 
             productManager.Add(product1);
+
+
         }
     }
 }
